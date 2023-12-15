@@ -114,50 +114,63 @@ int main()
 {
 	int opcao=0;
 	int laco=1;
+	char senhadigitada[] = "a";
+	int comparacao;
 	
-	for(laco=1;laco=1;)
+	setlocale(LC_ALL, "portuguese");
+	
+	printf("### Cartório da EBAC ###\n\n");
+	printf("Login do administrador!\n\nDigite a sua senha: ");
+	scanf("%s", senhadigitada); //codigo não estava funcionando pois coloquei o s maiusculo no %s
+	
+	comparacao = strcmp(senhadigitada, "admin");
+	//strcmp - usado para comparar strings
+	
+	if(comparacao == 0)
 	{
-	
 		system("cls");
-		
-		setlocale(LC_ALL, "portuguese");
-	
-		printf("### Cartorio da EBAC ### \n\n");
-		printf("Escolha uma opção do menu \n\n");
-		printf("\t1 - Registro de nomes \n");
-		printf("\t2 - Consulta de nomes \n");
-		printf("\t3 - Deletar nomes \n");
-		printf("\t4 - Sair do sistema\n\n");
-		printf("opção: ");
-		
-		scanf("%d", &opcao);
-	
-		system("cls");
-		
-		switch(opcao)
+		for(laco=1;laco=1;)
 		{
 			
-			case 1:
-				registro();
-				break;
+			printf("### Cartorio da EBAC ### \n\n");
+			printf("Escolha uma opção do menu \n\n");
+			printf("\t1 - Registro de nomes \n");
+			printf("\t2 - Consulta de nomes \n");
+			printf("\t3 - Deletar nomes \n");
+			printf("\t4 - Sair do sistema\n\n");
+			printf("opção: ");
+		
+			scanf("%d", &opcao);
+	
+			system("cls");
+		
+			switch(opcao)
+			{
+			
+				case 1:
+					registro();
+					break;
 				
-			case 2:
-				consulta();
-				break;
+				case 2:
+					consulta();
+					break;
 				
-			case 3:
-				deletar();
-				break;
+				case 3:
+					deletar();
+					break;
 				
-			case 4:
-				printf("Obrigado por utilizar o sistema");
-				return 0;
-				break;
+				case 4:
+					printf("Obrigado por utilizar o sistema");
+					return 0;
+					break;
 				
-			default:
-				printf("Esse usuário não esta cadastrado no sistema\n\n");
-				system("pause");
-				break;
+				default:
+					printf("Esse usuário não esta cadastrado no sistema\n\n");
+					system("pause");
+					break;
+			}	
 		}
 	}
+	else
+		printf("\nsenha incorreta");
 }
