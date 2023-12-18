@@ -48,7 +48,7 @@ int registro()
 	fclose(file);
 	
 	printf("Digite o cargo a ser cadastrado: ");
-	scanf("%s", sobrenome);
+	scanf("%s", cargo);
 	
 	file = fopen(arquivo, "a");
 	fprintf(file, cargo);
@@ -67,7 +67,7 @@ int consulta()
 	char cpf[40];
 	char conteudo[200];
 	
-	printf("Digite o cpf a ser cadastrado: \n");
+	printf("Digite o cpf a ser consultado: \n");
 	scanf("%s", cpf);
 	
 	FILE *file;
@@ -94,21 +94,30 @@ int deletar()
 	
 	char cpf[40];
 	
-	printf("Digite o cpf a ser deletado: ");
-	scanf("%s", cpf);
-	
-	remove("cpf");
-	
-	FILE *file;
-	file = fopen(cpf, "r");
+	printf("Digite o CPF do usuário a ser deletado: ");
+	scanf("%s",cpf);
+			
+	FILE *file;	
+	file = fopen(cpf,"r");
 	
 	if(file == NULL)
 	{
 		printf("O usuário não se encontra no sistema!.\n");
 		system("pause");
-		
 	}
-	
+	else
+	{
+		fclose(file);
+		remove(cpf);
+		FILE *file;	
+		file = fopen(cpf,"r");
+		if(file == NULL)
+		{
+			printf("Usuário deletado com sucesso!.\n");
+			system("pause");
+		}
+	}
+	fclose(file);
 }
 int main()
 {
